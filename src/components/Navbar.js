@@ -2,9 +2,16 @@ import React from "react";
 export default function Navbar(props) {
   return (
     <div className="navbar">
-      <a href="#" className="brand">
-        {props.brand}
-      </a>
+      <div className="brand-container">
+        <a href="#" className="brand">
+          {props.brand}
+        </a>
       </div>
+      <div className="level-container">
+        <h4 className="level">
+          Level 1
+        </h4>
+      </div>
+    </div>
   );
 }

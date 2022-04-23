@@ -1,14 +1,12 @@
 import React from "react";
 
 export default function Card(props) {
-  console.log("card renderd")
-  const startArray = props.startGame();
-  const cards = startArray.map((name, index) => {
+  const cards = props.startArray.map((name, index) => {
     return (
       <div key={index} className="card">
         <img
           name={name}
-          onClick={props.checkWin}
+          onClick = {event=> props.checkWin(event,props.startArray)}
           className="card-img"
           src={require(`../images/${name}.png`)}
         />

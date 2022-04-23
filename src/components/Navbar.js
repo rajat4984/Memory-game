@@ -9,7 +9,7 @@ export default function Navbar(props) {
       </div>
       <div className="level-container">
         <h4 className="level">
-          Level 1
+          Level {props.level}
         </h4>
       </div>
     </div>

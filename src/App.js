@@ -10,10 +10,11 @@ import GameOver from "./components/GameOver";
 function App() {
   const [current, setCurrent] = useState(0);
   const [high, setHigh] = useState(0);
-  // const [checkArray, setCheckArray] = useState([]);
   const [nextLevel, setNextLevel] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  let pokemonArray = [
+  const [cardRender, setCardRender] = useState(false);
+  const [checkArray, setCheckArray] = useState([]);
+  const pokemonArray = [
     "pokemon1",
     "pokemon2",
     "pokemon3",
@@ -28,33 +29,65 @@ function App() {
     "pokemon12",
   ];
 
-  const checkArray = [];
+  const shuffle = (startArray) => {
+    for (let i = startArray.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [startArray[i], startArray[j]] = [startArray[j], startArray[i]];
+    }
+    setStartArray(startArray);
+  };
 
   const startGame = () => {
+    console.log("IN start game");
     const range1 = Math.floor(Math.random() * 8) + 1;
     const range2 = range1 + 4;
     const startArray = pokemonArray.slice(range1, range2);
     return startArray;
   };
 
-  const checkWin = (e) => {
+  const levelArrayMaker = () => {
+    const range1 = Math.floor(Math.random() * 10) + 1;
+    const range2 = range1 + 2;
+    const newArray = pokemonArray.slice(range1, range2);
+    return newArray;
+  };
+
+  const startNextLevel = (prevLevelArray) => {
+    let newArray = levelArrayMaker();
+
+    while (
+      prevLevelArray.includes(newArray[0]) ||
+      prevLevelArray.includes(newArray[1])
+    ) {
+      newArray = levelArrayMaker();
+    }
+    setStartArray([...startArray, ...newArray]);
+  };
+
+  const checkWin = (e, startArray) => {
     const element = e.target.getAttribute("name");
+    console.log(startArray);
     if (checkArray.includes(element)) {
-      console.log("You lost the game");
       setGameOver(!gameOver);
     } else if (checkArray.length === 3) {
-      console.log("You won the level");
-      setNextLevel(!nextLevel);
+      // setNextLevel(!nextLevel);
+      startNextLevel(startArray);
+      setCardRender(!cardRender);
     } else {
-      checkArray.push(element);
+      setCheckArray([...checkArray, element]);
+      setCardRender(!cardRender);
+      shuffle(startArray);
     }
   };
+
+  const arr = startGame();
+  const [startArray, setStartArray] = useState(arr);
 
   if (nextLevel) {
     return (
       <div>
         <Navbar brand={"Memory-game"} />
-        <NextLevel />
+        <NextLevel level={1} />
       </div>
     );
   } else if (gameOver) {
@@ -70,10 +103,18 @@ function App() {
         <Navbar brand={"Memory-game"} />
         <Rules />
         <Score current={current} high={high} />
-        <Card startGame={startGame} checkWin={checkWin} />
+        <Card startArray={startArray} checkWin={checkWin} />
       </div>
     );
   }
+  // return (
+  //   <div>
+  //     <Navbar brand={"Memory-game"} />
+  //     <Rules />
+  //     <Score current={current} high={high} />
+  //     <Card startArray={startArray} checkWin={checkWin} />
+  //   </div>
+  // );
 }
 
 export default App;

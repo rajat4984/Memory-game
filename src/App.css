@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-:root {
-  --my-black: rgb(46, 46, 46);
-}
-
 * {
   font-family: "Press Start 2P", cursive;
   margin: 0;
@@ -16,17 +12,32 @@ body {
 }
 
 /* ---------------GLOBAL CLASSES------------------------- */
-.center{
+.center {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+}
+
+/* --------------------SCROLL BAR------------------------- */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #543864;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aa6789;
+  border-radius: 5px;
 }
 
 /* ---------NAVBAR---------------------- */
 
 .navbar {
-  background-color: #01024E;
+  background-color: #01024e;
   display: flex;
   justify-content: space-between;
   padding: 2em 1em;
@@ -50,7 +61,7 @@ body {
 
 .level:hover,
 .brand:hover {
-  background-color: #FF6464;
+  background-color: #ff6464;
   color: white(27, 27, 27);
   border-radius: 5px;
 }
@@ -108,12 +119,12 @@ body {
 
 /* --------------------GAMEOVER-------------------- */
 
-.btn-container{
+.btn-container {
   display: flex;
   justify-content: center;
 }
 
-.gameover-button{
+.gameover-button {
   margin-top: 2em;
   padding: 1em;
   border: 1px solid black;
@@ -121,14 +132,11 @@ body {
   cursor: pointer;
   background-color: #aa6789;
   color: white;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-
-.gameover-button:hover{
+.gameover-button:hover {
   background-color: #82529e;
   border: 1px solid white;
   transform: scale(1.2);
 }
-
-

@@ -36,20 +36,25 @@ function App() {
     "pokemon20",
   ];
 
+
+  //Shuffles the cards after every click
   const shuffle = (startArray) => {
-    let tempArray = startArray;
-    for (let i = tempArray.length - 1; i > 0; i--) {
+    let shuffled = startArray;
+    for (let i = shuffled.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
-      [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
 
-    if (tempArray !== startArray) {
+    // if shuffled array is same as before it will shuffle again
+    if (shuffled !== startArray) {
       shuffle(startArray);
     } else {
-      setStartArray(tempArray);
+      setStartArray(shuffled);
     }
   };
 
+
+  // gives the first array for the game 
   const startGame = () => {
     const range1 = Math.floor(Math.random() * 16) + 1;
     const range2 = range1 + 4;
@@ -57,26 +62,33 @@ function App() {
     return startArray;
   };
 
-  const levelArrayMaker = () => {
+  //concats more cards for next level 
+  const NewLevelArrayMaker = () => {
     const range1 = Math.floor(Math.random() * 18) + 1;
     const range2 = range1 + 2;
     const newArray = pokemonArray.slice(range1, range2);
     return newArray;
   };
 
+
+  //makes the new level
   const startNextLevel = (prevLevelArray, level) => {
-    let newArray = levelArrayMaker();
+    let newArray = NewLevelArrayMaker();
+
+    // if new cards given by NewLevelMaker are already in prev level array it will call NewLevelMaker again
     while (
       prevLevelArray.includes(newArray[0]) ||
       prevLevelArray.includes(newArray[1])
     ) {
-      newArray = levelArrayMaker();
+      newArray = NewLevelArrayMaker();
     }
     setStartArray([...startArray, ...newArray]);
     setLevelNum(level);
     setCheckArray([]);
   };
 
+
+  // starts new game after game over message appear on click of the button
   const startNewGame = () => {
     if (current > high) setHigh(current);
     setCurrent(0);
@@ -86,14 +98,21 @@ function App() {
     setGameOver(!gameOver);
   };
 
+  // checks if players has won the round 
   const checkWin = (e, startArray) => {
     const element = e.target.getAttribute("name");
 
+    // if element is includes in checkarray game will over
     if (checkArray.includes(element)) setGameOver(!gameOver);
+
+    // if player clicks on all the cards he will go in next round
     else if (checkArray.length === startArray.length - 1) {
       startNextLevel(startArray, levelNum + 1);
       setCardRender(!cardRender);
-    } else {
+    }
+
+    // else the element clicked will go in checkarray
+    else {
       setCheckArray([...checkArray, element]);
       setCurrent((prev) => prev + 1);
       setCardRender(!cardRender);

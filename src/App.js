@@ -6,6 +6,7 @@ import Card from "./components/Card";
 import { useState } from "react";
 import GameOver from "./components/GameOver";
 import Finished from "./components/Finished";
+import Loading from "./components/Loading";
 
 function App() {
   const [current, setCurrent] = useState(0);
@@ -15,6 +16,7 @@ function App() {
   const [checkArray, setCheckArray] = useState([]);
   const [levelNum, setLevelNum] = useState(1);
   const [gameFinished, setGameFinished] = useState(false);
+  const [loading, setLoading] = useState(false);
   const pokemonArray = [
     "pokemon1",
     "pokemon2",
@@ -94,10 +96,10 @@ function App() {
     setStartArray(startGame());
     setLevelNum(1);
     if (gameOver === true) setGameOver(!gameOver);
-    if (gameFinished === true){
+    if (gameFinished === true) {
       setGameFinished(!gameFinished);
       setHigh(0);
-    } 
+    }
   };
 
   // checks if players has won the round
@@ -107,11 +109,15 @@ function App() {
 
     // if element is includes in checkarray game will over
     if (checkArray.includes(element)) setGameOver(!gameOver);
-
     // if player clicks on all the cards he will go in next round
     else if (checkArray.length === startArray.length - 1 && levelNum === 5) {
       setGameFinished(!gameFinished);
     } else if (checkArray.length === startArray.length - 1) {
+      setLoading(!loading);
+      setTimeout(() => {
+        console.log("hello")
+        setLoading(false);
+      }, 1000);
       startNextLevel(startArray, levelNum + 1);
       setCardRender(!cardRender);
     }
@@ -133,6 +139,13 @@ function App() {
       <div>
         <Navbar level={levelNum} brand={"Memory-game"} />
         <GameOver startNewGame={startNewGame} />
+      </div>
+    );
+  } else if (loading) {
+    return (
+      <div>
+        <Navbar level={levelNum} brand={"Memory-game"} />
+        <Loading />
       </div>
     );
   } else if (gameFinished) {

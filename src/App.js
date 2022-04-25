@@ -88,7 +88,6 @@ function App() {
 
   // starts new game after game over message appear on click of the button
   const startNewGame = () => {
-    console.log("HEllo");
     if (current > high) setHigh(current);
     setCurrent(0);
     setCheckArray([]);
@@ -102,15 +101,17 @@ function App() {
   };
 
   // checks if players has won the round
+
   const checkWin = (e, startArray) => {
     const element = e.target.getAttribute("name");
+
     // if element is includes in checkarray game will over
     if (checkArray.includes(element)) setGameOver(!gameOver);
+
     // if player clicks on all the cards he will go in next round
     else if (checkArray.length === startArray.length - 1 && levelNum === 5) {
       setGameFinished(!gameFinished);
     } else if (checkArray.length === startArray.length - 1) {
-      console.log("in startNExtLEvel");
       startNextLevel(startArray, levelNum + 1);
       setCardRender(!cardRender);
     }

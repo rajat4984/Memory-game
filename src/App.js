@@ -49,11 +49,7 @@ function App() {
     }
 
     // if shuffled array is same as before it will shuffle again
-    if (shuffled !== startArray) {
-      shuffle(startArray);
-    } else {
-      setStartArray(shuffled);
-    }
+    shuffled !== startArray ? shuffle(startArray) : setStartArray(shuffled);
   };
 
   // gives the first array for the game
@@ -80,9 +76,8 @@ function App() {
     while (
       prevLevelArray.includes(newArray[0]) ||
       prevLevelArray.includes(newArray[1])
-    ) {
+    )
       newArray = NewLevelArrayMaker();
-    }
     setStartArray([...startArray, ...newArray]);
     setLevelNum(level);
     setCheckArray([]);
@@ -115,13 +110,12 @@ function App() {
     } else if (checkArray.length === startArray.length - 1) {
       setLoading(!loading);
       setTimeout(() => {
-        console.log("hello")
+        console.log("hello");
         setLoading(false);
       }, 1000);
       startNextLevel(startArray, levelNum + 1);
       setCardRender(!cardRender);
     }
-
     // else the element clicked will go in checkarray
     else {
       setCheckArray([...checkArray, element]);

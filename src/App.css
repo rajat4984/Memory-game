@@ -140,3 +140,36 @@ body {
   border: 1px solid white;
   transform: scale(1.2);
 }
+
+
+/* --------------------MEDIA---------------------- */
+
+@media only screen and (max-width: 920px){
+  html{
+    font-size: 13px;
+  }
+
+
+  /* ---------NAVBAR-------- */
+
+  .brand{
+    font-size: 1.2rem;
+  }
+
+  .level{
+    font-size: 0.9rem;
+  }
+
+  .card-container{
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  .game-over-text,.game-finished-text{
+    font-size: 1.5rem;
+  }
+
+  .score-container{
+    justify-content: space-between;
+  }
+
+}

@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d6501c21.css",
+    "main.js": "/static/js/main.c70815c0.js",
+    "static/media/pokemon8.png": "/static/media/pokemon8.ff4dd3acfac0c53fe759.png",
+    "static/media/pokemon19.png": "/static/media/pokemon19.b6b2bd44d7eb964a1e63.png",
+    "static/media/pokemon18.png": "/static/media/pokemon18.796c381aa09f4d539900.png",
+    "static/media/pokemon12.png": "/static/media/pokemon12.b0b69d9fcb4c0003dd28.png",
+    "static/media/pokemon5.png": "/static/media/pokemon5.687b63b9bf93e1830a67.png",
+    "static/media/pokemon16.png": "/static/media/pokemon16.c76d81589d431fa99258.png",
+    "static/media/pokemon17.png": "/static/media/pokemon17.6cd854f12e65cf618b1b.png",
+    "static/media/pokemon9.png": "/static/media/pokemon9.a13d8494666852405109.png",
+    "static/media/pokemon1.png": "/static/media/pokemon1.b76099c56730a5835395.png",
+    "static/media/pokemon10.png": "/static/media/pokemon10.fd67ad37145a38d66d14.png",
+    "static/media/pokemon13.png": "/static/media/pokemon13.c7b1d21e2afbf51f1a4e.png",
+    "static/media/pokemon7.png": "/static/media/pokemon7.d987bf2bb766fe02d58a.png",
+    "static/media/pokemon2.png": "/static/media/pokemon2.5b5244184215c6923155.png",
+    "static/media/pokemon15.png": "/static/media/pokemon15.1886673c4ebd1530057d.png",
+    "static/media/pokemon14.png": "/static/media/pokemon14.4887419f65ebf26e9909.png",
+    "static/media/pokemon6.png": "/static/media/pokemon6.a291565a710f7a0f10fa.png",
+    "static/media/pokemon4.png": "/static/media/pokemon4.5388128ffd4b2bdaf811.png",
+    "static/media/pokemon3.png": "/static/media/pokemon3.5bc6e242ca7f08669530.png",
+    "static/media/pokemon11.png": "/static/media/pokemon11.9828b5549daa313d8ef9.png",
+    "static/media/pokemon20.png": "/static/media/pokemon20.81363756a23cea1c6276.png",
+    "index.html": "/index.html",
+    "main.d6501c21.css.map": "/static/css/main.d6501c21.css.map",
+    "main.c70815c0.js.map": "/static/js/main.c70815c0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d6501c21.css",
+    "static/js/main.c70815c0.js"
+  ]
+}
